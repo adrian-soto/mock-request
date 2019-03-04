@@ -1,0 +1,15 @@
+# Test files
+./*test*
+*trash*
+
+# Experimentation files
+*sandbox*
+
+# emacs temp files
+*~
+
+# python binaries
+*.pyc
+
+# DataCamp exercise files
+Ch*py
