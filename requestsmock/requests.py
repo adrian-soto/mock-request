@@ -75,15 +75,15 @@ class MockRequests():
                 path = path[0]
 
 
-            # Load pickled request
-            request = self._load_pickle(path)
+            # Load pickled response
+            response = self._load_pickle(path)
 
         else:
             error_list = pd.read_csv(self._errors_data_path)
             error_path = error_list[error_list['error_type'] == self._error_type]['pickle_path'][0]
-            request = self._load_pickle(error_path)
+            response = self._load_pickle(error_path)
 
-        return request
+        return response
 
 
 
