@@ -3,7 +3,7 @@ import pickle
 
 def save_requests_info(requests_info, path):
     r"""
-    Save
+    Save a dictionary containing the request information to file
     """
 
     json_data = json.dumps(requests_info)
@@ -15,8 +15,8 @@ def save_requests_info(requests_info, path):
 def pickle_response(response, path):
 
     r"""
-
+    Save your response into a pickle file.
     """
 
     with open(path, "wb") as f:
-        pickle.dump(request, f)
+        pickle.dump(response, f)
