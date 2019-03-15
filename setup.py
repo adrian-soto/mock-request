@@ -7,7 +7,7 @@ from setuptools import setup
 
 _version_re = re.compile(r'__version__\s+=\s+(.*)')
 
-PACKAGE_NAME = 'requestsmock'
+PACKAGE_NAME = 'mock_request'
 HERE = path.abspath(path.dirname(__file__))
 with open(path.join(HERE, 'README.md'), encoding='utf-8') as fp:
     README = fp.read()
@@ -29,4 +29,4 @@ setup(
     maintainer_email='adrian.soto@datacamp.com',
     url='https://github.com/datacamp/datacampy',
     classifiers=["Programming Language :: Python :: 3"]
-
+)
