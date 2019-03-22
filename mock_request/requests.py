@@ -72,7 +72,7 @@ class MockRequests():
             if len(path) != 1:
                 raise ValueError('The destination of this request is not unique.')
             else:
-                path = path[0]
+                path = path.iloc[0]
 
 
             # Load pickled response
