@@ -72,8 +72,8 @@ class MockRequests():
         if 'headers' in kwargs:
             request.update(kwargs['headers'])
 
-        # Check if the request parameters match any
-        # row in lookup list
+        # Do request parameters match any of the
+        # rows in the lookup list?
         if (self._lookup_table['request_info'] == request).any():
 
             # Select all paths with matching request info
@@ -88,6 +88,7 @@ class MockRequests():
             # Load pickled response
             response = self._load_pickle(path)
 
+        # If it doesn't match, return error response
         else:
             error_list = pd.read_csv(self._errors_data_path)
             error_path = error_list[error_list['error_type'] == self._error_type]['pickle_path'][0]
