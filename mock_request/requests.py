@@ -54,14 +54,16 @@ class MockRequests():
         :rtype: requests.Response
         """
 
-        if params is None:
-            request = {}
-        else:
-            request = params
-
+        request = {}
         request['base_url'] = base_url
 
+        # Include params
+        if params:
+            request.update(params)
 
+        # Include headers, if any
+        if 'headers' in kwargs:
+            request.update(kwargs['headers'])
 
         if (self._lookup_table['request_info'] == request).any():
 
@@ -89,7 +91,7 @@ class MockRequests():
 
     def _load_pickle(self, path):
         r"""
-        Load a pickle fileself.
+        Load a pickle file.
 
         Args:
             path (str): path to pickle file.
