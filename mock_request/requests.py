@@ -37,10 +37,8 @@ class MockRequests():
 
         # From that data, create lookup table with two columns
         self._lookup_table = pd.DataFrame(
-            list(zip(*[pickle_paths, requests_data])),  # list(zip(*...)) to transpose the list of lists
+            list(zip(*[pickle_paths, requests_data])),  # list(zip(*...)) to transpose list of lists
             columns = ['pickle_path', 'request_info'])
-
-
 
 
     def get(self, base_url, params=None, **kwargs):
@@ -62,11 +60,11 @@ class MockRequests():
         # versions of mock-request may include more of these
         # arguments.
 
-
+        # Create dictionary containing the request information.
         request = {}
         request['base_url'] = base_url
 
-        # Include params
+        # Include params into dictionary, if any
         if params:
             request.update(params)
 
@@ -74,9 +72,11 @@ class MockRequests():
         if 'headers' in kwargs:
             request.update(kwargs['headers'])
 
+        # Check if the request parameters match any
+        # row in lookup list
         if (self._lookup_table['request_info'] == request).any():
 
-            # Select all paths with matching
+            # Select all paths with matching request info
             path = self._lookup_table[self._lookup_table['request_info'] == request]['pickle_path']
 
             # Select the path in string form
@@ -84,7 +84,6 @@ class MockRequests():
                 raise ValueError('The destination of this request is not unique.')
             else:
                 path = path.iloc[0]
-
 
             # Load pickled response
             response = self._load_pickle(path)
@@ -95,7 +94,6 @@ class MockRequests():
             response = self._load_pickle(error_path)
 
         return response
-
 
 
     def _load_pickle(self, path):
@@ -112,7 +110,6 @@ class MockRequests():
             pickled_object = pickle.load(f)
 
         return pickled_object
-
 
 
     def _load_requests_data(self, path = None):
