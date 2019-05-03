@@ -7,7 +7,18 @@ class MockRequests():
     r"""
     """
     def __init__(self, requests_data_path, errors_data_path, error_type=404):
-        r"""
+        """Instantiate a MockRequests object.
+
+        This object will contain the information to retrieve
+        previously saved response objects given that the right
+        request parameters are passed/provided.
+
+        :param requests_data_path: Path to JSON file containing info
+            of all stored request/response pairs.
+        :param errors_data_path: Path to CSV file containing error
+            type and file paths of error response objects.
+        :param error_type: Error type to return if the mocked request
+            is not among the saved response/request pairs.
         """
 
         # Path to file contaning data about all available requests
@@ -98,14 +109,11 @@ class MockRequests():
 
 
     def _load_pickle(self, path):
-        r"""
+        """
         Load a pickle file.
 
-        Args:
-            path (str): path to pickle file.
-
-        Returns
-           Object in pickle file.
+        :param path: string containing path to pickle file.
+        :return: object in pickle file.
         """
         with open(path, 'rb') as f:
             pickled_object = pickle.load(f)
@@ -114,14 +122,13 @@ class MockRequests():
 
 
     def _load_requests_data(self, path = None):
-        r"""
+        """
         Load data of all requests from a file, each encoded in a dictionary.
 
-        Args:
-            path (str): path to data file.
+        :param path: string containing path to data file.
 
-        Returns:
-            List of dictionaries containing
+        :return: list of dictionaries containing stored responses info and
+            path to the pickled responses.
         """
 
         # Default _requests_data_path
