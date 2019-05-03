@@ -53,6 +53,15 @@ class MockRequests():
         :return: :class:`Response <Response>` object
         :rtype: requests.Response
         """
+        # The get() function in the requests library is a wrapper
+        # of the request() function. request() accepts many keyword
+        # arguments, as it can be seen in its docstring
+        #    https://github.com/kennethreitz/requests/blob/master/requests/api.py
+        # In this implementation of the MockRequest.get() method,
+        # only the 'headers' keyword argument is allowed. Later
+        # versions of mock-request may include more of these
+        # arguments.
+
 
         request = {}
         request['base_url'] = base_url
