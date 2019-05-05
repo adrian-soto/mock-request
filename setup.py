@@ -19,7 +19,7 @@ setup(
     name=PACKAGE_NAME,
     version=VERSION,
     packages=[PACKAGE_NAME],
-    install_requires=["pandas"],
+    install_requires=["requests", "pandas"],
     description="mock API requests using pickled request objects",
     long_description=README,
     long_description_content_type='text/markdown',
