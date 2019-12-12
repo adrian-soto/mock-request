@@ -96,7 +96,7 @@ class MockRequests():
 
             # Select the path in string form
             if len(path) != 1:
-                raise ValueError('The destination of this request is not unique.')
+                raise ValueError('The path to this response is not unique.')
             else:
                 path = path.iloc[0]
 

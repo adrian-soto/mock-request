@@ -1,4 +1,0 @@
-pickle_path, error_type
-yelp-api-missing-key-response.pkl, 404
-yelp-api-wrong-base-url-response.pkl, 400
-yelp-api-wrong-location-parameter-response.pkl, 400
