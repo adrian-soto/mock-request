@@ -16,9 +16,9 @@ jobs:
           command: pip install -r tests/requirements.txt --user
       - run:
           name: Run unit tests
-          command: pip install pytest --user && pytest --cov ./
-          post:
-              - pip install codecov && codecov
+          command: |
+            pip install pytest --user && pytest --cov ./
+            pip install codecov && codecov
 workflows:
   version: 2
   build_and_test:
