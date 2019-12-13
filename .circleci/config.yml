@@ -5,7 +5,9 @@ jobs:
       - image: circleci/circleci/python:3.8.0rc1
     steps:
       - checkout
-      - run: pip install mock-request
+      - run: |
+      pip3 install -r requirements.txt
+      pip install mock-request
   test:
     docker:
       - image: circleci/circleci/python:3.8.0rc1
