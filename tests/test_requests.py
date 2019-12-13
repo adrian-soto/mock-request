@@ -18,6 +18,7 @@ params = [
     # TODO-- add more tests
     ("./tests/files/requests_info_tests.json", "./tests/files/errors_tests.csv")
 ]
+
 @pytest.mark.parametrize("f1, f2", params)
 def test_init_MockRequests(f1, f2):
     requests = MockRequests(f1, f2)
