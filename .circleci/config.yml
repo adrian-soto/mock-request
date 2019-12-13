@@ -12,10 +12,7 @@ jobs:
           name: Install package
           command: pip install . --user
       - run:
-          name: Install unit test packages
-          command: pip install -r tests/requirements.txt --user
-      - run:
-          name: Run unit tests
+          name: Unit tests
           command: |
             pip install pytest --user && pytest --cov ./
             pip install codecov && codecov
