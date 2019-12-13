@@ -10,7 +10,7 @@ jobs:
             pip install -r requirements.txt --user
             pip install . --user
             pip freeze
-	    pytest
+            pytest
 workflows:
   version: 2
   build_and_test:
