@@ -1,4 +1,6 @@
 # dependencies
 pandas>=0.23.0
-pytest>=5.3.1
 requests>=2.22.0
+pytest>=5.3.1
+pytest-cov>=2.8.1
+
