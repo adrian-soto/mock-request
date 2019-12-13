@@ -4,7 +4,7 @@ jobs:
       branches:
         only:
           - master
-          - /rc-.*/  # for release candidates
+          - /rc-.*/
     docker:
       - image: circleci/python:3.8.0rc1
     steps:
