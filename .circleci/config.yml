@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/circleci/python:3.8.0rc1
+      - image: circleci/python:3.8.0rc1
     steps:
       - checkout
       - run: |
@@ -10,7 +10,7 @@ jobs:
       pip install mock-request
   test:
     docker:
-      - image: circleci/circleci/python:3.8.0rc1
+      - image: circleci/python:3.8.0rc1
     steps:
       - checkout
       - run: pytest
