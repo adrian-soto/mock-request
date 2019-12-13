@@ -9,8 +9,10 @@ jobs:
           command: |
             pip install -r requirements.txt --user
             pip install . --user
+            pip install codecov --user && codecov -t .
             pip freeze
             pytest
+
 workflows:
   version: 2
   build_and_test:
