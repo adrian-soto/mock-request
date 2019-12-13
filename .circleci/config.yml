@@ -1,10 +1,6 @@
 version: 2.1
 jobs:
   build_and_test:
-    branches:
-      only:
-        - master
-        - /rc-.*/
     docker:
       - image: circleci/python:3.8.0rc1
     steps:
