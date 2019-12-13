@@ -5,13 +5,12 @@ jobs:
       - image: circleci/python:3.8.0rc1
     steps:
       - checkout
-      - run: |
-      pip install -r requirements.txt
-      pip install .
-      pip freeze
+      - run:
+          command: |
+            pip install -r requirements.txt
+            pip install .
+            pip freeze
   test:
-    docker:
-      - image: circleci/python:3.8.0rc1
     steps:
       - checkout
       - run: pytest
