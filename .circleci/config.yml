@@ -15,8 +15,8 @@ jobs:
           name: Unit tests
           command: |
             pip install pytest --user
-            pip install pytest-cov
-            pip install codecov
+            pip install pytest-cov --user
+            pip install codecov --user
             pytest --cov ./
             codecov
 workflows:
