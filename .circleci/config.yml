@@ -7,8 +7,8 @@ jobs:
       - checkout
       - run:
           command: |
-            pip install -r requirements.txt
-            pip install .
+            pip install -r requirements.txt --user
+            pip install . --user
             pip freeze
   test:
     docker:
