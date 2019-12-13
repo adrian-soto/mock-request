@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  build_and_test:
+    docker:
+      - image: circleci/python:3.8.0rc1
+    steps:
+      - checkout
+      - run:
+          name: Install requirements
+          command: pip install -r requirements.txt --user
+      - run:
+          name: Install package
+          command: pip install . --user
+      - run:
+          name: Install unit test packages
+          command: pip install -r tests/requirements.txt --user
+      - run:
+          name: Run unit tests
+          command: pytest --cov ./
+          post:
+              - codecov
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_and_test

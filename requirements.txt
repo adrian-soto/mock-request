@@ -1,3 +1,4 @@
 # dependencies
-pandas=0.23.0
+pandas>=0.23.0
+requests>=2.22.0
 

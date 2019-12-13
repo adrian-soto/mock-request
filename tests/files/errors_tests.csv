@@ -1,0 +1,4 @@
+,error_type,pickle_file
+0,404,./yelp-api-wrong-base-url-response.pkl
+1,400,./yelp-api-missing-key-response.pkl
+2,400,./yelp-api-wrong-location-parameter-response.pkl

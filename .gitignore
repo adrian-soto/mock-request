@@ -1,9 +1,9 @@
-# Test files
-./*test*
-*trash*
-
-# Experimentation files
+# Prototyping files
 *sandbox*
+*scratch*
+
+# Private files
+./private
 
 # emacs temp files
 *~
