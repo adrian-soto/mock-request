@@ -3,8 +3,8 @@ jobs:
   build_and_test:
       branches:
         only:
-	  - master
-	  - /rc-.*/  # for release candidates
+          - master
+          - /rc-.*/  # for release candidates
     docker:
       - image: circleci/python:3.8.0rc1
     steps:
