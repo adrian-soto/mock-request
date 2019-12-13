@@ -15,9 +15,9 @@ jobs:
           command: pip install . --user
       - run:
           name: Run unit tests
-          command: pytest --cov mock_request
-      - codecov/upload:
-          file: .codecov_report
+          command: pytest --cov ./
+          post:
+              - pip install codecov && codecov
 workflows:
   version: 2
   build_and_test:
