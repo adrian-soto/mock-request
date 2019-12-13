@@ -13,7 +13,7 @@ jobs:
           command: pip install . --user
       - run:
           name: Run unit tests
-          command: pip install tests/requirements.txt && pytest --cov ./
+          command: pip install -r tests/requirements.txt && pytest --cov ./
           post:
               - codecov
 workflows:
