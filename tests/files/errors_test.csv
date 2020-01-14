@@ -1,4 +1,0 @@
-error_type,pickle_path
-404,/home/adrian/Projects/mock-request/tests/files/yelp-api-wrong-base-url-response.pkl
-400,/home/adrian/Projects/mock-request/tests/files/yelp-api-missing-key-response.pkl
-400,/home/adrian/Projects/mock-request/tests/files/yelp-api-wrong-location-parameter-response.pkl

@@ -1,1 +1,1 @@
-[{"location": "Newark, NJ", "term": "laundromat", "limit": 5, "base_url": "https://api.yelp.com/v3/businesses/search", "pickle_path": "/home/adrian/Projects/mock-request/tests/files/yelp-api-laundromat-newark-response.pkl"}]
+[{"location": "Newark, NJ", "term": "laundromat", "limit": 5, "base_url": "https://api.yelp.com/v3/businesses/search", "pickle_path": "./yelp-api-laundromat-newark-response.pkl"}]
