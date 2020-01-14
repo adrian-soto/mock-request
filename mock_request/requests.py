@@ -79,13 +79,16 @@ class MockRequests():
         if params:
             request.update(params)
 
-        # ToDo: This "if" below can probably be generalized quite
-        #   easily by looping over kwargs.keys()
-        # 
-        # Include headers, if any
-        if 'headers' in kwargs:
-            request.update(kwargs['headers'])
-
+        # We could add checks of request headers by uncommenting
+        # this code
+        #
+        # # Include headers, if any
+        # if 'headers' in kwargs:
+        #     request.update(kwargs['headers'])
+        #
+        # # This "if" can be generalized quite easily by looping
+        # # over kwargs.keys()
+        #
 
         # Do request parameters match any of the
         # rows in the lookup list?
