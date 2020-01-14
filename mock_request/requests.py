@@ -4,8 +4,17 @@ import pandas as pd
 
 
 class MockRequests():
-    r"""
+    r"""Mock the requests library.
+    
+    Objects of this class have a `get()` method that has an indentical
+    API to the `get()` function in the requests library. This method 
+    does NOT execute an actual API request. Instead, it looks up the 
+    base URL and the request parameters in a lookup table and returns
+    pre-saved responses when matches occur. If there are no matches,
+    the code returns an error response that must be provided by the
+    user.
     """
+    
     def __init__(self, requests_data_path, errors_data_path, error_type=404):
         """Instantiate a MockRequests object.
 
@@ -53,15 +62,17 @@ class MockRequests():
 
 
     def get(self, base_url, params=None, **kwargs):
-        # THIS IS THE DOCSTRING OF THE get method of the requests package (version x.y.z)
-        """Sends a GET request.
+        # THIS IS THE DOCSTRING OF THE get method of the requests package (version v2.22.0)
+        # Check it out here
+        #   https://github.com/psf/requests/blob/afb508f6a77c0f31b7e318c34166662cbf0a5844/requests/sessions.py#L535
+        # 
+        """Sends a GET request. Returns :class:`Response` object.
 
         :param url: URL for the new :class:`Request` object.
-        :param params: (optional) Dictionary or bytes to be sent in the query string for the :class:`Request`.
         :param \*\*kwargs: Optional arguments that ``request`` takes.
-        :return: :class:`Response <Response>` object
         :rtype: requests.Response
         """
+        
         # The get() function in the requests library is a wrapper
         # of the request() function. request() accepts many keyword
         # arguments, as it can be seen in its docstring
