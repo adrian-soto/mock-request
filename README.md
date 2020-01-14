@@ -1,7 +1,7 @@
 # mock-request
 Mock API requests with and obtain a pre-saved response object.
 
-With this package you can mock the behavior of the [`requests` library](https://requests.readthedocs.io/en/master/). You'll write code that looks identical to the one you'd be using in an actual request, but which in reality will load pre-saved response objects with matching request parameters.
+With this package you can mock the behavior of the [`requests` library](https://requests.readthedocs.io/en/master/). You can write code that looks identical to the one you'd be using in an actual request, but which in reality loads pre-saved response objects with matching request parameters.
 
 [![CircleCI](https://circleci.com/gh/adrian-soto/mock-request.svg?style=svg)](https://circleci.com/gh/adrian-soto/mock-request)
 [![codecov](https://codecov.io/gh/adrian-soto/mock-request/branch/master/graph/badge.svg)](https://codecov.io/gh/adrian-soto/mock-request)
