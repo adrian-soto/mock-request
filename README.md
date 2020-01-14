@@ -23,8 +23,8 @@ $ pip install mock_request --user
 in your terminal.
 
 
-## History and usage
-The creation of this package was originally created for online courses, for several reasons
+## History
+This package was originally created for online courses, for several reasons
 1. hitting an API thousands of time a day from the same IP and/or with the same authentication will hit the daily download limit
 1. the online course will not rely on the API servers, and will continue to work even if they're down or if the API changes
 1. it shortens the execution time of online exercises
