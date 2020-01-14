@@ -19,14 +19,12 @@ setup(
     name=PACKAGE_NAME,
     version=VERSION,
     packages=[PACKAGE_NAME],
-    install_requires=["pandas"],
+    install_requires=["pandas", "requests"],
     description="mock API requests using pickled request objects",
     long_description=README,
     long_description_content_type='text/markdown',
-    author='DataCamp',
-    author_email='adrian.soto@datacamp.com',
+    author='Adrián Soto',
     maintainer='Adrián Soto',
-    maintainer_email='adrian.soto@datacamp.com',
-    url='https://github.com/datacamp/datacampy',
+    url='https://github.com/adrian-soto/mock-request',
     classifiers=["Programming Language :: Python :: 3"]
 )

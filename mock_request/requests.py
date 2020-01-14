@@ -3,9 +3,18 @@ from ast import literal_eval
 import pandas as pd
 
 
-class MockRequests():
-    r"""
+class MockRequests:
+    r"""Mock the requests library.
+    
+    Objects of this class have a `get()` method that has an indentical
+    API to the `get()` function in the requests library. This method 
+    does NOT execute an actual API request. Instead, it looks up the 
+    base URL and the request parameters in a lookup table and returns
+    pre-saved responses when matches occur. If there are no matches,
+    the code returns an error response that must be provided by the
+    user.
     """
+
     def __init__(self, requests_data_path, errors_data_path, error_type=404):
         """Instantiate a MockRequests object.
 
@@ -30,38 +39,49 @@ class MockRequests():
         # Error type to display if a wrong request is entered
         self._error_type = error_type
 
-
         # Read data from all accessible requests
         requests_data = self._load_requests_data()
         if not isinstance(requests_data, list):
-            raise TypeError("The file %(filepath)s does contain a list.".format(self._requests_data_path))
+            raise TypeError(
+                "The file %(filepath)s does contain a list.".format(
+                    self._requests_data_path
+                )
+            )
 
         pickle_paths = list()
         for request_data in requests_data:
             if not isinstance(request_data, dict):
-                raise TypeError("File %(filepath)s does not seem to contain a list of dictionaries.".format(self._requests_data_path))
+                raise TypeError(
+                    "File %(filepath)s does not seem to contain a list of dictionaries.".format(
+                        self._requests_data_path
+                    )
+                )
 
             # Grab path to pickle and remove from dictionary
-            pickle_paths.append(request_data['pickle_path'])
-            del request_data['pickle_path']
-
+            pickle_paths.append(request_data["pickle_path"])
+            del request_data["pickle_path"]
 
         # From that data, create lookup table with two columns
         self._lookup_table = pd.DataFrame(
-            list(zip(*[pickle_paths, requests_data])),  # list(zip(*...)) to transpose list of lists
-            columns = ['pickle_path', 'request_info'])
-
+            list(
+                zip(*[pickle_paths, requests_data])
+            ),  # list(zip(*...)) to transpose list of lists
+            columns=["pickle_path", "request_info"],
+        )
 
     def get(self, base_url, params=None, **kwargs):
-        # THIS IS THE DOCSTRING OF THE get method of the requests package (version x.y.z)
-        """Sends a GET request.
+        # THIS IS THE DOCSTRING OF THE get method of the requests package (version v2.22.0)
+        # Check it out here
+        #   https://github.com/psf/requests/blob/afb508f6a77c0f31b7e318c34166662cbf0a5844/requests/sessions.py#L535
+        #
+
+        """Sends a GET request. Returns :class:`Response` object.
 
         :param url: URL for the new :class:`Request` object.
-        :param params: (optional) Dictionary or bytes to be sent in the query string for the :class:`Request`.
         :param \*\*kwargs: Optional arguments that ``request`` takes.
-        :return: :class:`Response <Response>` object
         :rtype: requests.Response
         """
+
         # The get() function in the requests library is a wrapper
         # of the request() function. request() accepts many keyword
         # arguments, as it can be seen in its docstring
@@ -73,30 +93,35 @@ class MockRequests():
 
         # Create dictionary containing the request information.
         request = {}
-        request['base_url'] = base_url
+        request["base_url"] = base_url
 
         # Include params into dictionary, if any
         if params:
             request.update(params)
 
-        # ToDo: This "if" below can probably be generalized quite
-        #   easily by looping over kwargs.keys()
-        # 
-        # Include headers, if any
-        if 'headers' in kwargs:
-            request.update(kwargs['headers'])
-
+        # We could add checks of request headers by uncommenting
+        # this code
+        #
+        # # Include headers, if any
+        # if 'headers' in kwargs:
+        #     request.update(kwargs['headers'])
+        #
+        # # This "if" can be generalized quite easily by looping
+        # # over kwargs.keys()
+        #
 
         # Do request parameters match any of the
         # rows in the lookup list?
-        if (self._lookup_table['request_info'] == request).any():
+        if (self._lookup_table["request_info"] == request).any():
 
             # Select all paths with matching request info
-            path = self._lookup_table[self._lookup_table['request_info'] == request]['pickle_path']
+            path = self._lookup_table[self._lookup_table["request_info"] == request][
+                "pickle_path"
+            ]
 
             # Select the path in string form
             if len(path) != 1:
-                raise ValueError('The path to this response is not unique.')
+                raise ValueError("The path to this response is not unique.")
             else:
                 path = path.iloc[0]
 
@@ -106,11 +131,12 @@ class MockRequests():
         # If it doesn't match, return error response
         else:
             error_list = pd.read_csv(self._errors_data_path)
-            error_path = error_list[error_list['error_type'] == self._error_type]['pickle_path'][0]
+            error_path = error_list[error_list["error_type"] == self._error_type][
+                "pickle_path"
+            ][0]
             response = self._load_pickle(error_path)
 
         return response
-
 
     def _load_pickle(self, path):
         """
@@ -119,13 +145,12 @@ class MockRequests():
         :param path: string containing path to pickle file.
         :return: object in pickle file.
         """
-        with open(path, 'rb') as f:
+        with open(path, "rb") as f:
             pickled_object = pickle.load(f)
 
         return pickled_object
 
-
-    def _load_requests_data(self, path = None):
+    def _load_requests_data(self, path=None):
         """
         Load data of all requests from a file, each encoded in a dictionary.
 
@@ -139,5 +164,7 @@ class MockRequests():
         if path is None:
             path = self._requests_data_path
 
-        with open(path, 'r') as f:
-            return literal_eval(f.read())  # literal_eval converts string into python objects
+        with open(path, "r") as f:
+            return literal_eval(
+                f.read()
+            )  # literal_eval converts string into python objects
