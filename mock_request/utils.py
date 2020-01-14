@@ -3,6 +3,7 @@
 import json
 import pickle
 
+
 def save_requests_info(requests_info, path):
     """Save a dictionary containing request information to JSON file.
 
