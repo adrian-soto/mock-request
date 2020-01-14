@@ -66,6 +66,7 @@ class MockRequests():
         # Check it out here
         #   https://github.com/psf/requests/blob/afb508f6a77c0f31b7e318c34166662cbf0a5844/requests/sessions.py#L535
         # 
+
         """Sends a GET request. Returns :class:`Response` object.
 
         :param url: URL for the new :class:`Request` object.
