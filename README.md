@@ -12,15 +12,16 @@ With this package you can mock the behavior of the [`requests` library](https://
 - `requests>=2.21.0`
 
 
-## Usage
-Until a more complete of examples is available, you can get a good sense of how to use this package by working through the `[tests/files/yelp-api-request.ipynb](https://github.com/adrian-soto/mock-request/blob/master/tests/files/yelp-api-request.ipynb) notebook`.
-
 ## Installation
 This package is not yet available in PyPy, but you can still install it using `pip`. First clone the repo, navigate into the repo directory, and then issue
 ```sh
 $ pip install mock_request --user
 ```
 in your terminal.
+
+
+## Usage
+Until a more complete of examples is available, you can get a good sense of how to use this package by working through the `[tests/files/yelp-api-request.ipynb](https://github.com/adrian-soto/mock-request/blob/master/tests/files/yelp-api-request.ipynb) notebook`.
 
 
 ## History
