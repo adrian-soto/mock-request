@@ -21,7 +21,7 @@ in your terminal.
 
 
 ## Usage
-Until a more complete of examples is available, you can get a good sense of how to use this package by working through the `[tests/files/yelp-api-request.ipynb](https://github.com/adrian-soto/mock-request/blob/master/tests/files/yelp-api-request.ipynb) notebook`.
+Until a more complete of examples is available, you can get a good sense of how to use this package by working through the `[mock-request/tests/files/yelp-api-request.ipynb](https://github.com/adrian-soto/mock-request/blob/master/tests/files/yelp-api-request.ipynb)` notebook.
 
 
 ## History
